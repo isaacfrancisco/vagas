@@ -1,4 +1,4 @@
-var data = require("./fakeData");
+const data = require("./fakeData");
 const UserNotFoundError = require("./errors/user/userNotFoundError");
 
 // método corrigido
@@ -13,7 +13,7 @@ const UserNotFoundError = require("./errors/user/userNotFoundError");
 // };
 
 //Minha solução para o método melhorado
-const getUser = (req, res) => {
+const getUserByName = (req, res) => {
   try {
     const name = req.query.name;
 
@@ -31,6 +31,6 @@ const getUsers = (req, res, next) => {
 };
 
 module.exports = {
-  getUser,
+  getUserByName,
   getUsers,
 };
