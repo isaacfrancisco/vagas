@@ -1,5 +1,4 @@
 const data = require("./fakeData");
-const UserAlreadyExistsError = require("./errors/user/userAlreadyExistsError");
 const UserNotFoundError = require("./errors/user/userNotFoundError");
 
 // module.exports =  function(req, res) {
@@ -23,20 +22,10 @@ const updateUserById = (req, res) => {
     const user = data.find((user) => user.id === id);
     if (!user) throw new UserNotFoundError("Usuário não encontrado", 404);
 
-    const alreadyExists = data.find((user) => user.name === name);
-    if (alreadyExists)
-      throw new UserAlreadyExistsError(
-        `Já existe um usuário com o nome ${name}`,
-        400
-      );
-
     const userUpdated = { id, name, job };
-
     const index = data.findIndex((user) => user.id === userUpdated.id);
 
-    if (index !== -1) {
-      data[index] = userUpdated;
-    }
+    data[index] = userUpdated;
 
     return res.send(userUpdated);
   } catch (error) {

@@ -1,4 +1,3 @@
-const UserAlreadyExistsError = require("./errors/user/userAlreadyExistsError");
 const data = require("./fakeData");
 
 // Metodo corrigido
@@ -22,13 +21,6 @@ const data = require("./fakeData");
 const createUser = (req, res) => {
   try {
     const name = req.body.name;
-
-    const alreadyExists = data.find((user) => user.name === name);
-    if (alreadyExists)
-      throw new UserAlreadyExistsError(
-        `Já existe um usuário com o nome ${name}`,
-        400
-      );
 
     const job = req.body.job;
     const newId = data[data.length - 1].id + 1;
