@@ -1,5 +1,6 @@
 const data = require("./fakeData");
 const UserNotFoundError = require("./errors/user/userNotFoundError");
+const { countReadings } = require("./utils/countReadings");
 
 // método corrigido
 // const getUser = (req, res, next) => {
@@ -20,14 +21,20 @@ const getUserByName = (req, res) => {
     const user = data.find((user) => user.name === name);
     if (!user) throw new UserNotFoundError("Usuário não encontrado", 404);
 
-    return res.send(user);
+    const result = countReadings(data, user);
+
+    return res.send({ id: result.id, name: result.name, job: result.job });
   } catch (error) {
     res.status(error.status ?? 500).json(error.message);
   }
 };
 
 const getUsers = (req, res, next) => {
-  res.send(data);
+  res.send(
+    data.map((user) => {
+      return { id: user.id, name: user.name, job: user.job };
+    })
+  );
 };
 
 module.exports = {

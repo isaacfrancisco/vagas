@@ -22,12 +22,16 @@ const updateUserById = (req, res) => {
     const user = data.find((user) => user.id === id);
     if (!user) throw new UserNotFoundError("Usuário não encontrado", 404);
 
-    const userUpdated = { id, name, job };
+    const userUpdated = { id, name, job, count: 0 };
     const index = data.findIndex((user) => user.id === userUpdated.id);
 
     data[index] = userUpdated;
 
-    return res.send(userUpdated);
+    return res.send({
+      id: userUpdated.id,
+      name: userUpdated.name,
+      job: userUpdated.job,
+    });
   } catch (error) {
     res.status(error.status ?? 500).json(error.message);
   }

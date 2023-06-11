@@ -20,7 +20,7 @@ router.get("/", function (req, res) {
 
 router.get("/user", teste1.getUserByName);
 router.get("/users", teste1.getUsers);
-router.get("/users/access", teste5);
+router.get("/users/access", teste5.countUserReadings);
 router.post("/users", validateName, validateJob, teste2.createUser);
 router.put("/users", validateName, validateJob, teste4.updateUserById);
 router.delete("/users", teste3.deleteUserByName);
