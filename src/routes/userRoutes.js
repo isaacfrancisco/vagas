@@ -8,6 +8,7 @@ const teste4 = require("../teste4");
 const teste5 = require("../teste5");
 const { validateName } = require("../middlewares/validateName");
 const { validateJob } = require("../middlewares/validateJob");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 router.get("/", function (req, res) {
   res.send(`get user/ </br>
@@ -22,7 +23,13 @@ router.get("/user", teste1.getUserByName);
 router.get("/users", teste1.getUsers);
 router.get("/users/access", teste5.countUserReadings);
 router.post("/users", validateName, validateJob, teste2.createUser);
-router.put("/users", validateName, validateJob, teste4.updateUserById);
-router.delete("/users", teste3.deleteUserByName);
+router.put(
+  "/users",
+  verifyToken,
+  validateName,
+  validateJob,
+  teste4.updateUserById
+);
+router.delete("/users", verifyToken, teste3.deleteUserByName);
 
 module.exports = router;

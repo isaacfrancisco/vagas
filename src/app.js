@@ -2,7 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 
-const userRoutes = require("./routes/routes");
+const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 app.set("view engine", "jade");
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 app.use(userRoutes);
+app.use(authRoutes);
 
 const port = 3000;
 app.listen(port, function () {
