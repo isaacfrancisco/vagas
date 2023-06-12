@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const teste1 = require("../teste1");
-const teste2 = require("../teste2");
-const teste3 = require("../teste3");
-const teste4 = require("../teste4");
-const teste5 = require("../teste5");
+const userController = require("../controllers/userController");
+
 const { validateName } = require("../middlewares/validateName");
 const { validateJob } = require("../middlewares/validateJob");
 const { verifyToken } = require("../middlewares/verifyToken");
@@ -19,17 +16,17 @@ router.get("/", function (req, res) {
   `);
 });
 
-router.get("/user", teste1.getUserByName);
-router.get("/users", teste1.getUsers);
-router.get("/users/access", teste5.countUserReadings);
-router.post("/users", validateName, validateJob, teste2.createUser);
+router.get("/user", userController.getUserByName);
+router.get("/users", userController.getUsers);
+router.get("/users/access", userController.countUserReadings);
+router.post("/users", validateName, validateJob, userController.createUser);
 router.put(
   "/users",
   verifyToken,
   validateName,
   validateJob,
-  teste4.updateUserById
+  userController.updateUserById
 );
-router.delete("/users", verifyToken, teste3.deleteUserByName);
+router.delete("/users", verifyToken, userController.deleteUserByName);
 
 module.exports = router;

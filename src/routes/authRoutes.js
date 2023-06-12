@@ -1,7 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const data = require("../fakeData");
+const data = require("../database/fakeData");
 const router = express.Router();
 
 router.get("/generate-token", (req, res) => {

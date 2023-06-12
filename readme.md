@@ -1,3 +1,21 @@
+# Para configurar o projeto, siga os seguintes passos
+
+## Instalação de dependencias
+
+`npm install` or `yarn install`
+
+## Configurar o .env
+
+> crie um arquivo .env de acordo com o .env.example na raiz do projeto!
+> crie uma secret para o JWT ou execute este seguinte comando para gerar
+> `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+
+## Iniciar o projeto
+
+> execute o seguinte comando para iniciar o projeto
+
+## `yarn start` Or `npm run start`
+
 # Este é um teste para desenvolvedores
 
 # possui 5 testes
@@ -14,7 +32,7 @@ Fique a vontade para fazer modificaçoes nos serviços, comentários em código,
 
 ## teste1.js
 
-GET em /user 
+GET em /user
 
 Possuimos neste arquivo um serviço que faz uma busca no banco fake e retorna um registro.
 Este código funciona, mas é possivel melhorar.
@@ -40,4 +58,3 @@ Retorne quantas vezes determinado usuário foi lido no teste1.
 ## teste 6
 
 Definina uma forma de criar permissão para o usuario, defina se o usuário pode deletar ou atualizar usuários. Crie um middleware para validar essas permissões e adicione no teste4 e teste3.
-
