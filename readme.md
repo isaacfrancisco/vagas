@@ -6,15 +6,16 @@
 
 ## Configurar o .env
 
-> crie um arquivo .env de acordo com o .env.example na raiz do projeto!
-> crie uma secret para o JWT ou execute este seguinte comando para gerar
-> `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+crie um arquivo .env de acordo com o .env.example na raiz do projeto!
+crie uma secret para o JWT ou execute este seguinte comando para gerar
+`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
 
 ## Iniciar o projeto
 
-> execute o seguinte comando para iniciar o projeto
+execute o seguinte comando para iniciar o projeto
+`yarn start` Or `npm run start`
 
-## `yarn start` Or `npm run start`
+---
 
 # Este é um teste para desenvolvedores
 
